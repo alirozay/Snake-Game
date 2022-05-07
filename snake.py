@@ -7,9 +7,11 @@ MOVE_FORWARD = 20
 
 
 class Snake:
+    speed: float
 
     def __init__(self) -> None:
         self.body = []
+        self.speed = 0.5
         for position in COORDINATES:
             self.add_segment(position)
 
@@ -22,6 +24,7 @@ class Snake:
 
     def extend(self) -> None:
         self.add_segment(self.body[-1].position())
+        self.speed *= 0.9
 
     def move(self) -> None:
         for i in range(len(self.body) - 1, 0, -1):

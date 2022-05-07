@@ -23,15 +23,13 @@ screen.onkeypress(fun=simon_the_snake.down, key="Down")
 screen.onkeypress(fun=simon_the_snake.right, key="Right")
 
 while is_game_on:
-    #   print(snake.body[0].heading())
     screen.update()
-    time.sleep(timer)
+    time.sleep(simon_the_snake.speed)
     simon_the_snake.move()
     if simon_the_snake.body[0].distance(food) < 15:
         food.refresh()
         simon_the_snake.extend()
         score.update()
-        timer -= 0.05
     if simon_the_snake.body[0].xcor() > 280 or \
             simon_the_snake.body[0].xcor() < -280 or \
             simon_the_snake.body[0].ycor() > 280 or \
