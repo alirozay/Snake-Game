@@ -1,21 +1,25 @@
 from turtle import Turtle
 from typing import List, Tuple
 
-body: List[Turtle]
 COORDINATES = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_FORWARD = 20
 
 
-class Snake:
+class Snake(Turtle):
+    body: List[Turtle]
     speed: float
 
     def __init__(self) -> None:
+        super().__init__()
         self.body = []
         self.speed = 0.5
+        self.create_body()
+
+    def create_body(self) -> None:
         for position in COORDINATES:
             self.add_segment(position)
 
-    def add_segment(self, position:Tuple[int]) -> None:
+    def add_segment(self, position: Tuple[int]) -> None:
         new_body = Turtle("square")
         new_body.color("white")
         new_body.pu()
@@ -53,3 +57,8 @@ class Snake:
         if current_heading == 90 or current_heading == 270:
             self.body[0].setheading(0)
 
+    def reset_snake(self) -> None:
+        for body in self.body:
+            body.goto(1000,1000)
+        self.body.clear()
+        self.create_body()

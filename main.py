@@ -34,13 +34,15 @@ while is_game_on:
             simon_the_snake.body[0].xcor() < -280 or \
             simon_the_snake.body[0].ycor() > 280 or \
             simon_the_snake.body[0].ycor() < -280:
-        score.game_over()
-        is_game_on = False
+        score.reset()
+        simon_the_snake.reset_snake()
+        #is_game_on = False
 
     for body in simon_the_snake.body[1:]:
         if simon_the_snake.body[0].distance(body) < 15:
-            score.game_over()
-            is_game_on = False
+            score.reset()
+            simon_the_snake.reset_snake()
+            #is_game_on = False
 
 
 screen.exitonclick()
